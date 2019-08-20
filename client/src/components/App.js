@@ -5,6 +5,7 @@ import CreateStream from "./streams/CreateStream"
 import DeleteStream from "./streams/DeleteStream"
 import EditStream from "./streams/EditStream"
 import ShowStream from "./streams/ShowStream"
+import Header from "./Header"
 import "../App.css"
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <div>
       <BrowserRouter>
         <div>
-          <h1>Stream It!</h1>
+          <Header />
           <Route path='/' exact component={StreamList} />
           <Route path='/streams/new' component={CreateStream} />
           <Route path='/streams/delete' component={DeleteStream} />
