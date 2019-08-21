@@ -24,12 +24,18 @@ export default class GoogleAuth extends React.Component {
   }
   render() {
     return this.state.isSignedIn ? (
-      <button className='ui red google button'>
+      <button
+        className='ui red google button'
+        onClick={() => this.auth.signOut()}
+      >
         <i className='google icon' />
         Sign Out
       </button>
     ) : (
-      <button className='ui red google button'>
+      <button
+        className='ui blue google button'
+        onClick={() => this.auth.signIn()}
+      >
         <i className='google icon' />
         Sign In with Google
       </button>
