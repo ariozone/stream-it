@@ -15,10 +15,14 @@ export default class GoogleAuth extends React.Component {
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance()
           this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+          this.auth.isSignedIn.listen(this.onAuthChange)
         })
     })
   }
+  onAuthChange = () => {
+    this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+  }
   render() {
-    return <h1>Google Auth</h1>
+    return this.state.isSignedIn ? <div>Logout</div> : <div>Login</div>
   }
 }
