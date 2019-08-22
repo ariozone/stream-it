@@ -1,7 +1,9 @@
 import React from "react"
+import { connect } from "react-redux"
+import { signIn, signOut } from "../actions"
 require("dotenv").config()
 
-export default class GoogleAuth extends React.Component {
+class GoogleAuth extends React.Component {
   state = {
     isSignedIn: null
   }
@@ -19,8 +21,8 @@ export default class GoogleAuth extends React.Component {
         })
     })
   }
-  onAuthChange = () => {
-    this.setState({ isSignedIn: this.auth.isSignedIn.get() })
+  onAuthChange = isSignedIn => {
+    isSignedIn ? this.props.signIn() : this.props.signOut()
   }
   render() {
     return this.state.isSignedIn ? (
@@ -42,3 +44,8 @@ export default class GoogleAuth extends React.Component {
     )
   }
 }
+
+export default connect(
+  null,
+  { signIn, signOut }
+)(GoogleAuth)
