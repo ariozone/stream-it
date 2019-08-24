@@ -1,7 +1,20 @@
 import React from "react"
+import { Field, reduxForm } from "redux-form"
 
-const CreateStream = () => {
-  return <h1>Create Stream</h1>
+class CreateStream extends React.Component {
+  renderInput = ({ input }) => {
+    return <input {...input} />
+  }
+  render() {
+    return (
+      <form>
+        <Field name='title' component={this.renderInput} />
+        <Field name='description' component={this.renderInput} />
+      </form>
+    )
+  }
 }
 
-export default CreateStream
+export default reduxForm({
+  form: "CreateStream"
+})(CreateStream)
