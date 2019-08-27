@@ -31,7 +31,12 @@ class CreateStream extends React.Component {
     )
   }
 }
-
+const validate = formValues => {
+  const errors = {}
+  if (!formValues.title) errors.title = "Title is required!"
+  if (!formValues.description) errors.description = "Description is required!"
+  return errors
+}
 export default reduxForm({
   form: "CreateStream"
 })(CreateStream)
