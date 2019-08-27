@@ -23,7 +23,7 @@ class CreateStream extends React.Component {
     )
   }
   onSubmit = values => {
-    console.log(values)
+    this.props.createStream(values)
   }
 
   render() {
@@ -51,7 +51,7 @@ const validate = formValues => {
 
   return errors
 }
-
+const mapStateToProps = state => {}
 export default connect(
   null,
   { createStream }
