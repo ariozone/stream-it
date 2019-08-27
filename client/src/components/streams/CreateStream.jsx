@@ -2,11 +2,13 @@ import React from "react"
 import { Field, reduxForm } from "redux-form"
 
 class CreateStream extends React.Component {
-  renderInput = ({ input, label }) => {
+  renderInput = ({ input, label, meta }) => {
+    console.log(meta)
     return (
       <div className='field'>
         <label htmlFor={input.name}>{label}</label>
         <input {...input} />
+        <div>{meta.error}</div>
       </div>
     )
   }
@@ -33,10 +35,14 @@ class CreateStream extends React.Component {
 }
 const validate = formValues => {
   const errors = {}
+
   if (!formValues.title) errors.title = "Title is required!"
   if (!formValues.description) errors.description = "Description is required!"
+
   return errors
 }
+
 export default reduxForm({
-  form: "CreateStream"
+  form: "CreateStream",
+  validate
 })(CreateStream)
