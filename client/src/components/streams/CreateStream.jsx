@@ -1,5 +1,7 @@
 import React from "react"
 import { Field, reduxForm } from "redux-form"
+import { connect } from "react-redux"
+import { createStream } from "../../actions"
 
 class CreateStream extends React.Component {
   renderError = ({ error, touched }) => {
@@ -50,7 +52,12 @@ const validate = formValues => {
   return errors
 }
 
-export default reduxForm({
-  form: "CreateStream",
-  validate
-})(CreateStream)
+export default connect(
+  null,
+  { createStream }
+)(
+  reduxForm({
+    form: "CreateStream",
+    validate
+  })(CreateStream)
+)
