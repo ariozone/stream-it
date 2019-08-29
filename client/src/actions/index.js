@@ -1,4 +1,10 @@
-import { SIGN_IN, SIGN_OUT, CREATE_STREAM, GET_STREAMS } from "./types"
+import {
+  SIGN_IN,
+  SIGN_OUT,
+  CREATE_STREAM,
+  GET_STREAMS,
+  GET_STREAM
+} from "./types"
 import streams from "../apis/streams"
 
 export const signIn = userId => {
@@ -20,6 +26,11 @@ export const createStream = formValues => async dispatch => {
 }
 
 export const getStreams = () => async dispatch => {
-  const { data } = await streams.get("./streams")
+  const { data } = await streams.get("/streams")
   dispatch({ type: GET_STREAMS, payload: data })
+}
+
+export const getStream = id => async dispatch => {
+  const { data } = await streams.get(`/streams/${id}`)
+  dispatch({ type: GET_STREAM, payload: data })
 }
