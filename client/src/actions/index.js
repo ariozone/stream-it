@@ -3,7 +3,8 @@ import {
   SIGN_OUT,
   CREATE_STREAM,
   GET_STREAMS,
-  GET_STREAM
+  GET_STREAM,
+  EDIT_STREAM
 } from "./types"
 import streams from "../apis/streams"
 
@@ -33,4 +34,9 @@ export const getStreams = () => async dispatch => {
 export const getStream = id => async dispatch => {
   const { data } = await streams.get(`/streams/${id}`)
   dispatch({ type: GET_STREAM, payload: data })
+}
+
+export const editStream = id => async dispatch => {
+  const { data } = await streams.put(`/streams/${id}`)
+  dispatch({ type: EDIT_STREAM, payload: data })
 }
