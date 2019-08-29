@@ -4,7 +4,8 @@ import {
   CREATE_STREAM,
   GET_STREAMS,
   GET_STREAM,
-  EDIT_STREAM
+  EDIT_STREAM,
+  DELETE_STREAM
 } from "./types"
 import streams from "../apis/streams"
 
@@ -36,7 +37,12 @@ export const getStream = id => async dispatch => {
   dispatch({ type: GET_STREAM, payload: data })
 }
 
-export const editStream = id => async dispatch => {
-  const { data } = await streams.put(`/streams/${id}`)
+export const editStream = (formValues, id) => async dispatch => {
+  const { data } = await streams.put(`/streams/${id}`, formValues)
   dispatch({ type: EDIT_STREAM, payload: data })
+}
+
+export const deleteStream = id => async dispatch => {
+  await streams.delete(`/streams/${id}`)
+  dispatch({ type: DELETE_STREAM, payload: id })
 }
