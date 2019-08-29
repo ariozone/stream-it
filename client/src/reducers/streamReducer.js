@@ -31,6 +31,6 @@ export default (state = {}, action) => {
     // return { ...state, [action.payload]: undefined }
 
     default:
-      state
+      return state
   }
 }
