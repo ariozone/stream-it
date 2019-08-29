@@ -1,3 +1,4 @@
+import _ from "lodash"
 import {
   GET_STREAM,
   GET_STREAMS,
@@ -14,6 +15,10 @@ export default (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload }
     case EDIT_STREAM:
       return { ...state, [action.payload.id]: action.payload }
+    case DELETE_STREAM:
+      // omit does not change the original state, it creates a new one
+      return _.omit(state, action.payload)
+    // return { ...state, [action.payload]: undefined }
     default:
       state
   }
