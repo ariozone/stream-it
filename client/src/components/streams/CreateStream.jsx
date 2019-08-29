@@ -13,7 +13,6 @@ class CreateStream extends React.Component {
       )
   }
   renderInput = ({ input, label, meta }) => {
-    console.log(meta)
     return (
       <div className={`field + ${meta.error && meta.touched ? "error" : ""}`}>
         <label htmlFor={input.name}>{label}</label>
@@ -51,13 +50,12 @@ const validate = formValues => {
 
   return errors
 }
-const mapStateToProps = state => {}
+const wrapper = reduxForm({
+  form: "CreateStream",
+  validate
+})(CreateStream)
+
 export default connect(
   null,
   { createStream }
-)(
-  reduxForm({
-    form: "CreateStream",
-    validate
-  })(CreateStream)
-)
+)(wrapper)
