@@ -6,18 +6,22 @@ class StreamList extends Component {
   componentDidMount() {
     this.props.getStreams()
   }
+  renderStreamsList = () => {
+    return this.props.streams.map(stream => {
+      return (
+        <div className='item' key={stream.id}>
+          <i className='large middle aligned icon camera' />
+          <div className='content'>{stream.title}</div>
+          <div className='description'>{stream.description}</div>
+        </div>
+      )
+    })
+  }
   render() {
     return (
       <div>
         <h1>Streams List</h1>
-        <ul>
-          {this.props.streams.map(stream => (
-            <li key={stream.id}>
-              <h2>{stream.title}</h2>
-              <h5>{stream.description}</h5>
-            </li>
-          ))}
-        </ul>
+        <div className='ui celled list'>{this.renderStreamsList()}</div>
       </div>
     )
   }
