@@ -26,6 +26,7 @@ class CreateStream extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <form
         className='ui form error'
@@ -51,7 +52,7 @@ const validate = formValues => {
   return errors
 }
 const wrapper = reduxForm({
-  form: "CreateStream",
+  form: "StreamCreate",
   validate
 })(CreateStream)
 
