@@ -12,7 +12,10 @@ class StreamList extends Component {
         <h1>Streams List</h1>
         <ul>
           {this.props.streams.map(stream => (
-            <li>{stream.title}</li>
+            <li key={stream.id}>
+              <h2>{stream.title}</h2>
+              <h5>{stream.description}</h5>
+            </li>
           ))}
         </ul>
       </div>

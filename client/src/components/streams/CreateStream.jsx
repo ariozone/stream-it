@@ -15,7 +15,7 @@ class CreateStream extends React.Component {
   renderInput = ({ input, label, meta }) => {
     return (
       <div className={`field + ${meta.error && meta.touched ? "error" : ""}`}>
-        <label htmlFor={input.name}>{label}</label>
+        <label>{label}</label>
         <input {...input} autoComplete='off' />
         {this.renderError(meta)}
       </div>
@@ -23,14 +23,15 @@ class CreateStream extends React.Component {
   }
   onSubmit = values => {
     this.props.createStream(values)
+    this.props.clearFields()
   }
 
   render() {
     console.log(this.props)
     return (
       <form
-        className='ui form error'
         onSubmit={this.props.handleSubmit(this.onSubmit)}
+        className='ui form error'
       >
         <Field name='title' component={this.renderInput} label='Enter Title' />
         <Field
