@@ -27,10 +27,10 @@ class StreamList extends Component {
     return (
       stream.userId === this.props.currentUserId && (
         <div className='right floated content'>
-          <Link to='/streams/edit' className='ui button gray'>
+          <Link to={`/streams/edit/${stream.id}`} className='ui button gray'>
             Edit
           </Link>
-          <Link to='/streams/delete' className='ui button red'>
+          <Link to={`/streams/delete/${stream.id}`} className='ui button red'>
             Delete
           </Link>
         </div>
