@@ -16,10 +16,10 @@ function App() {
         <div>
           <Header />
           <Route path='/' exact component={StreamList} />
-          <Route path='/streams/new' component={CreateStream} />
-          <Route path='/streams/delete' component={DeleteStream} />
-          <Route path='/streams/edit' component={EditStream} />
-          <Route path='/streams/show' component={ShowStream} />
+          <Route path='/streams/new' exact component={CreateStream} />
+          <Route path='/streams/delete/:id' exact component={DeleteStream} />
+          <Route path='/streams/edit/:id' exact component={EditStream} />
+          <Route path='/streams/show' exact component={ShowStream} />
         </div>
       </Router>
     </div>
