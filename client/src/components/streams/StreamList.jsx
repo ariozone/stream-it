@@ -16,9 +16,13 @@ class StreamList extends Component {
             {stream.title}
             <div className='description'>{stream.description}</div>
           </div>
+          {this.renderAdminButtons(stream)}
         </div>
       )
     })
+  }
+  renderAdminButtons = stream => {
+    return stream.userId === this.props.currentUserId && <div>Edit/Delete</div>
   }
   render() {
     return (
@@ -30,7 +34,10 @@ class StreamList extends Component {
   }
 }
 const mapStateToProps = state => {
-  return { streams: Object.values(state.streams) }
+  return {
+    streams: Object.values(state.streams),
+    currentUserId: state.auth.userId
+  }
 }
 export default connect(
   mapStateToProps,
