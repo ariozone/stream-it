@@ -27,7 +27,6 @@ class CreateStream extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <form
         onSubmit={this.props.handleSubmit(this.onSubmit)}
