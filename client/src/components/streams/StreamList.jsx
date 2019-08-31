@@ -22,16 +22,22 @@ class StreamList extends Component {
       )
     })
   }
+
   renderAdminButtons = stream => {
     return (
       stream.userId === this.props.currentUserId && (
         <div className='right floated content'>
-          <button className='ui button gray'>Edit</button>
-          <button className='ui button red'>Delete</button>
+          <Link to='/streams/edit' className='ui button gray'>
+            Edit
+          </Link>
+          <Link to='/streams/delete' className='ui button red'>
+            Delete
+          </Link>
         </div>
       )
     )
   }
+
   renderCreateButton = () => {
     return (
       this.props.isSignedIn && (
@@ -41,6 +47,7 @@ class StreamList extends Component {
       )
     )
   }
+
   render() {
     return (
       <div>
