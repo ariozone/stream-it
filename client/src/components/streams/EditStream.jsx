@@ -1,15 +1,16 @@
-import React from "react"
+import React, { Component } from "react"
 import { connect } from "react-redux"
+import { getStream } from "../../actions"
 
-const EditStream = props => {
-  console.log(props)
-  return (
-    <div>
-      <h1>Edit Stream</h1>
-      <h3>ID: {props.match.params.id}</h3>
-      <h4>Title: {props.stream.title}</h4>
-    </div>
-  )
+class EditStream extends Component {
+  componentDidMount() {
+    this.props.getStream(this.props.match.params.id)
+  }
+  render() {
+    console.log(this.props)
+    if (!this.props.stream) return <h4>Loading...</h4>
+    return <h4>Title: {this.props.stream.title}</h4>
+  }
 }
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -17,4 +18,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps)(EditStream)
+export default connect(
+  mapStateToProps,
+  { getStream }
+)(EditStream)
