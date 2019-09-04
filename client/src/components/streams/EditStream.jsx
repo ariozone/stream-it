@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { getStream } from "../../actions"
+import { getStream, editStream } from "../../actions"
+import Form from "../common/form"
 
 class EditStream extends Component {
   componentDidMount() {
@@ -13,6 +14,7 @@ class EditStream extends Component {
       <div>
         <h1>Edit Stream</h1>
         <h4>Title: {this.props.stream.title}</h4>
+        <Form />
       </div>
     )
   }
@@ -25,5 +27,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { getStream }
+  { getStream, editStream }
 )(EditStream)
