@@ -3,16 +3,18 @@
     {
       "title": "Stream1",
       "description": "This is my first stream",
+      "userId": "103419581419970903176",
       "id": 1
     },
     {
       "title": "Stream2",
       "description": "This is my second stream",
+      "userId": "103419581419970903176",
       "id": 2
     },
     {
       "title": "Stream3",
-      "description": "This stream contains user id",
+      "description": "This stream contains user id(Used HTTP Patch request)",
       "userId": "103419581419970903176",
       "id": 3
     },
@@ -25,6 +27,7 @@
     {
       "title": "Refactoring ",
       "description": "This is about Refactoring the createStream component ",
+      "userId": "103419581419970903176",
       "id": 5
     }
   ]

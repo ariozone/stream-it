@@ -40,12 +40,8 @@ export const getStream = id => async dispatch => {
   dispatch({ type: GET_STREAM, payload: data })
 }
 
-export const editStream = (id, formValues) => async (dispatch, getState) => {
-  const { userId } = getState().auth
-  const { data } = await streams.put(`/streams/${id}`, {
-    ...formValues,
-    userId
-  })
+export const editStream = (id, formValues) => async dispatch => {
+  const { data } = await streams.patch(`/streams/${id}`, formValues)
   dispatch({ type: EDIT_STREAM, payload: data })
   history.push("/")
 }
