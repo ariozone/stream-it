@@ -2,9 +2,12 @@ import React, { Component } from "react"
 import Modal from "../modal"
 import { connect } from "react-redux"
 import history from "../../history"
-import { deleteStream } from "../../actions"
+import { deleteStream, getStream } from "../../actions"
 
 class DeleteStream extends Component {
+  componentDidMount() {
+    this.props.getStream(this.props.match.params.id)
+  }
   renderButtons = () => {
     return (
       <div>
@@ -28,4 +31,7 @@ class DeleteStream extends Component {
   }
 }
 
-export default connect(deleteStream)(DeleteStream)
+export default connect(
+  null,
+  { deleteStream, getStream }
+)(DeleteStream)
