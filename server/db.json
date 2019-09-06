@@ -3,12 +3,20 @@
     {
       "title": "Stream1",
       "description": "This is my first stream",
+      "userId": "103419581419970903176",
       "id": 1
     },
     {
-      "title": "Stream2",
-      "description": "This is my second stream",
-      "id": 2
+      "title": "Programmatic Navigation ",
+      "description": "This one uses custom history object to navigate to homepage after submission(Edited)",
+      "userId": "103419581419970903176",
+      "id": 4
+    },
+    {
+      "title": "Refactoring ",
+      "description": "This is about Refactoring the createStream component ",
+      "userId": "103419581419970903176",
+      "id": 5
     }
   ]
 }
