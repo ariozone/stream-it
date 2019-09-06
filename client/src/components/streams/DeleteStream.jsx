@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Modal from "../modal"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import history from "../../history"
 import { deleteStream, getStream } from "../../actions"
 
@@ -8,11 +9,20 @@ class DeleteStream extends Component {
   componentDidMount() {
     this.props.getStream(this.props.match.params.id)
   }
+
   renderButtons = () => {
+    const { id } = this.props.match.params
     return (
       <div>
-        <div className='ui red button'>Delete</div>
-        <div className='ui cancel button'>Cancel</div>
+        <div
+          onClick={() => this.props.deleteStream(id)}
+          className='ui red button'
+        >
+          Delete
+        </div>
+        <Link to='/' className='ui cancel button'>
+          Cancel
+        </Link>
       </div>
     )
   }
@@ -24,7 +34,6 @@ class DeleteStream extends Component {
   }
 
   render() {
-    console.log(this.props.stream)
     return (
       <Modal
         header='Delete Stream'
