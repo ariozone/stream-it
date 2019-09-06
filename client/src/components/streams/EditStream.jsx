@@ -14,7 +14,6 @@ class EditStream extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { stream } = this.props
     if (!stream) return <h4>Loading...</h4>
     return (

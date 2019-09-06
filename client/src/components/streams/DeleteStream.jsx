@@ -16,22 +16,31 @@ class DeleteStream extends Component {
       </div>
     )
   }
+  renderContent = () => {
+    const content = this.props.stream
+      ? `the stream with title: "${this.props.stream.title}" ?`
+      : "this stream"
+    return "Are you sure you want to delete " + content
+  }
+
   render() {
+    console.log(this.props.stream)
     return (
-      <div>
-        <h1>Delete Stream</h1>
-        <Modal
-          header='Delete Stream'
-          content='Are you sure you want to delete this stream?'
-          actions={this.renderButtons()}
-          onDismiss={() => history.push("/")}
-        />
-      </div>
+      <Modal
+        header='Delete Stream'
+        content={this.renderContent()}
+        actions={this.renderButtons()}
+        onDismiss={() => history.push("/")}
+      />
     )
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  return { stream: state.streams[ownProps.match.params.id] }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { deleteStream, getStream }
 )(DeleteStream)
