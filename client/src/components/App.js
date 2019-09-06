@@ -19,7 +19,7 @@ function App() {
           <Route path='/streams/new' exact component={CreateStream} />
           <Route path='/streams/delete/:id' exact component={DeleteStream} />
           <Route path='/streams/edit/:id' exact component={EditStream} />
-          <Route path='/streams/show' exact component={ShowStream} />
+          <Route path='/streams/:id' exact component={ShowStream} />
         </div>
       </Router>
     </div>
