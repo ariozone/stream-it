@@ -9,7 +9,8 @@ class ShowStream extends Component {
   render() {
     return (
       <h1>
-        Show Stream {this.props.stream ? this.props.stream.title : "Loading..."}
+        Showing Stream:{" "}
+        {this.props.stream ? this.props.stream.title : "Loading..."}
       </h1>
     )
   }
