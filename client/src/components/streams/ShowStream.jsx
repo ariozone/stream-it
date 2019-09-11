@@ -8,15 +8,39 @@ class ShowStream extends Component {
     super(props)
     this.videoRef = React.createRef()
   }
+
   componentDidMount() {
-    this.props.getStream(this.props.match.params.id)
+    const { id } = this.props.match.params
+    this.props.getStream(id)
+    this.createPlayer()
   }
+
+  componentDidUpdate() {
+    this.createPlayer()
+  }
+
+  createPlayer = () => {
+    const { id } = this.props.match.params
+    if (this.flvPlayer || !this.props.stream) return null
+    this.flvPlayer = flv.createPlayer({
+      type: "flv",
+      url: `http://localhost:8000/live/${id}.flv`
+    })
+    this.flvPlayer.attachMediaElement(this.videoRef.current)
+    this.flvPlayer.load()
+    //this.flvPlayer.play()
+  }
+
   render() {
     return !this.props.stream ? (
-      <div>Loading</div>
+      <div>Loading...</div>
     ) : (
       <div>
-        <video ref={this.videoRef}></video>
+        <video
+          ref={this.videoRef}
+          style={{ width: "100%" }}
+          controls={true}
+        ></video>
         <h1>{this.props.stream.title}</h1>
         <h3>{this.props.stream.description}</h3>
       </div>
