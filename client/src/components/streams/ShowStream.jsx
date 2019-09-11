@@ -1,7 +1,9 @@
-import React from "react"
+import React, { Component } from "react"
 
-const ShowStream = () => {
-  return <h1>Show Stream</h1>
+class ShowStream extends Component {
+  render() {
+    return <h1>Show Stream</h1>
+  }
 }
 
 export default ShowStream
