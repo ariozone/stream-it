@@ -1,17 +1,25 @@
 import React, { Component } from "react"
 import { getStream } from "../../actions"
 import { connect } from "react-redux"
+import flv from "flv.js"
 
 class ShowStream extends Component {
+  constructor(props) {
+    super(props)
+    this.videoRef = React.createRef()
+  }
   componentDidMount() {
     this.props.getStream(this.props.match.params.id)
   }
   render() {
-    return (
-      <h1>
-        Showing Stream:{" "}
-        {this.props.stream ? this.props.stream.title : "Loading..."}
-      </h1>
+    return !this.props.stream ? (
+      <div>Loading</div>
+    ) : (
+      <div>
+        <video ref={this.videoRef}></video>
+        <h1>{this.props.stream.title}</h1>
+        <h3>{this.props.stream.description}</h3>
+      </div>
     )
   }
 }
