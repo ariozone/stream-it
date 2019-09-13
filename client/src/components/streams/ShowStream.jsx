@@ -19,6 +19,10 @@ class ShowStream extends Component {
     this.createPlayer()
   }
 
+  componentWillUnmount() {
+    this.flvPlayer.destroy()
+  }
+
   createPlayer = () => {
     const { id } = this.props.match.params
     if (this.flvPlayer || !this.props.stream) return null
